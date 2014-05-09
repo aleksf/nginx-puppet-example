@@ -16,13 +16,14 @@ It is also available from the Forge. Install puppetlabs-firewall module if it is
  
 ##Modules layout
 
- role - module that contains role::webserver class that applies to the node in site.pp
- profile - lower level abstraction module that icludes 2 classes
-  profile::base - base OS resources, that contains EPEL yumrepo and git package resources
-  profile::nginx - nginx profile that includes lower level nginx module and also uses Puppetlabs firewall resource to enable INCOMING traffic on port 8000
-  
- nginx - low level abstraction class that defines nginx package/file/service resources in init.pp
- nginx::vhost - define type that takes vhost_name and vhost_port arguments and passes them to nginx vhost ERB template and git_content_url (optional)
+| Module        | Description   |
+| ------------- |:-------------:|
+| role    | module that contains role::webserver class that applies to the node in site.pp |
+| profile | lower level abstraction module that icludes 2 classes
+| profile::base | base OS resources, that contains EPEL yumrepo and git package resources |
+| profile::nginx | nginx profile that includes lower level nginx module and also uses Puppetlabs firewall resource to enable INCOMING traffic on port 8000 |
+| nginx | low level abstraction class that defines nginx package/file/service resources in init.pp |
+| nginx::vhost | defined type that takes vhost_name and vhost_port arguments and passes them to nginx vhost ERB template and git_content_url (optional) |
 
 ##Workflow
 
@@ -38,7 +39,6 @@ It is also available from the Forge. Install puppetlabs-firewall module if it is
   1. Copy modules from puppet/modules in your modulepath
   2. Make sure puppetlabs firewall module is installed - look in your modulepath or execute command
      <code># puppet module list<code>
-  
   3. In your ENC or site.pp assign following class to the node - **role::webserver**
 
 ##Unit testing
