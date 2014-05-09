@@ -1,0 +1,8 @@
+server {
+    listen       <%= @vhost_port %>;
+    server_name  <%= @vhost_name %>;
+    location / {
+    root   /var/www/vhosts/<%= @vhost_name %>;
+        index  index.html index.htm;
+    }
+}
