@@ -2,19 +2,19 @@ nginx-puppet-example
 ====================
 
 
-DESCRIPTION
+#Description
 
 Repository contains Vagrantfile and Puppet modules to setup nginx to serve content on port 8000
 
-Solution is designed following Puppet Roles and Profiles pattern and contains rspec-puppet unit tests under nginx module
-Solution is applicable to RedHat osfamily only, however it is easy to extend it to use osfamily hiera overrides or OS specific params.pp
+Solution is designed following **Puppet Roles and Profiles** pattern and contains rspec-puppet unit tests under nginx module
+At the current stage solution is applicable to **RedHat** osfamily only, however it is easy to extend it to use osfamily hiera overrides or OS specific params.pp
 
 Solution depends on Puppetlabs firewall module that comes by default in PE. 
 It is also available from the Forge. Install puppetlabs-firewall module if it is not present.
 
- # puppet module install puppetabs-firewall
+ <code># puppet module install puppetabs-firewall</code>
  
-MODULES LAYOUT
+##Modules layout
 
  role - module that contains role::webserver class that applies to the node in site.pp
  profile - lower level abstraction module that icludes 2 classes
@@ -24,7 +24,7 @@ MODULES LAYOUT
  nginx - low level abstraction class that defines nginx package/file/service resources in init.pp
  nginx::vhost - define type that takes vhost_name and vhost_port arguments and passes them to nginx vhost ERB template and git_content_url (optional)
 
-WORKFLOW
+##Workflow
 
   1. base profile resources are applied first - epel yum repo and git package
   2. nginx resources are applied - package, file, service
@@ -33,19 +33,19 @@ WORKFLOW
   5. INCOMING allow iptables firewall rule added for port 8000
   6. git clone is invoked to fetch https://github.com/puppetlabs/exercise-webpage content under vhost root
 
-USAGE
+##Usage
   
   1. Copy modules from puppet/modules in your modulepath
   2. Make sure puppetlabs firewall module is installed - look in your modulepath or execute command
-    # puppet module list
+     <code># puppet module list<code>
   
-  3. In your ENC or site.pp assign following class to the node - role::webserver
+  3. In your ENC or site.pp assign following class to the node - **role::webserver**
 
-TESTING
+##Unit testing
 
   Only if you are interested...
   
   Rspec-puppet testing covers nginx resources in main class and vhost config file contents in defined type
   
-  1. Install required gems - cd to nginx module and execute 'bundle install'
-  2. Run 'rake spec' from nginx module directory
+  1. Install required gems - cd to nginx module and execute **bundle install**
+  2. Run **rake spec** from nginx module directory
