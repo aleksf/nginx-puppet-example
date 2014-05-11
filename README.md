@@ -9,11 +9,17 @@ Repository contains Vagrantfile and Puppet modules to setup nginx to serve conte
 Solution is designed following **Puppet Roles and Profiles** pattern and contains rspec-puppet unit tests under nginx module
 At the current stage solution is applicable to **RedHat** osfamily only, however it is easy to extend it to use osfamily hiera overrides or OS specific params.pp
 
+##Dependencies
+
 Solution depends on Puppetlabs firewall module that comes by default in PE. 
 It is also available from the Forge. Install puppetlabs-firewall module if it is not present.
 
  <code># puppet module install puppetabs-firewall</code>
  
+If using Vagrant, solution depends on vagrant-serverspec plugin
+
+ <code># vagrant plugin install vagrant-serverspec</code>
+
 ##Modules layout
 
 | Module        | Description   |
@@ -43,9 +49,11 @@ It is also available from the Forge. Install puppetlabs-firewall module if it is
 
 ##Unit testing
 
-  Only if you are interested...
-  
   Rspec-puppet testing covers nginx resources in main class and vhost config file contents in defined type
   
   1. Install required gems - cd to nginx module and execute **bundle install**
   2. Run **rake spec** from nginx module directory
+
+##Integration testing
+
+  Serverspec test nginx_spec.rb is integrated with vagrant provisioning and verifies TCP port, nginx service and package as well as OS process name.
