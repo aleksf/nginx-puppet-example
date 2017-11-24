@@ -11,7 +11,7 @@ At the current stage solution is applicable to **RedHat** osfamily only, however
 
 ##Dependencies
 
-Solution depends on Puppetlabs firewall module that comes by default in PE. 
+S0lution depends on Puppetlabs firewall module that comes by default in PE. 
 It is also available from the Forge. Install puppetlabs-firewall module if it is not present.
 
  <code># puppet module install puppetabs-firewall</code>
