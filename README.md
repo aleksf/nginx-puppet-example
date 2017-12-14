@@ -57,3 +57,5 @@ If using Vagrant, solution depends on vagrant-serverspec plugin
 ##Integration testing
 
   Serverspec test nginx_spec.rb is integrated with vagrant provisioning and verifies TCP port, nginx service and package as well as OS process name.
+
+NTADMIN
